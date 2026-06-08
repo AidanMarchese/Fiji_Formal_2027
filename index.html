@@ -6,767 +6,468 @@
 <title>Fiji Formal 2027 — Nashville</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rye&family=Smokum&family=Special+Elite&family=Stardos+Stencil:wght@400;700&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&amp;family=Allura&amp;family=Inter:wght@300;400;500;600;700&amp;family=Bebas+Neue&amp;display=swap" rel="stylesheet">
 <style>
   :root {
-    --fiji-purple: #4B2E83;
-    --fiji-purple-deep: #2E1A5C;
-    --fiji-gold: #D4A82E;
-    --fiji-gold-bright: #F2C744;
-    --fiji-white: #F8F5EC;
-    --wood-dark: #2A1810;
-    --wood-mid: #4A2C1A;
-    --wood-light: #6B4423;
-    --tan: #E8D5A8;
-    --tan-light: #F2E5C2;
-    --saloon-red: #8B2C3D;
-    --cream: #FAF4E1;
+    --purple-900: #1E1247;
+    --purple-800: #2A1A65;
+    --purple-700: #3A1F7A;
+    --purple-600: #4B2E83;
+    --purple-500: #6B4099;
+    --gold-500: #D4A82E;
+    --gold-400: #E8BE3F;
+    --gold-300: #F5C842;
+    --gold-100: #F7E9B6;
+    --cream: #FAF7F0;
+    --white: #FFFFFF;
+    --gray-100: #F4F1EA;
+    --gray-300: #C9C2B5;
+    --gray-600: #6B6557;
+    --gray-800: #2D2A24;
+    --shadow-sm: 0 2px 6px rgba(30,18,71,0.08);
+    --shadow-md: 0 6px 20px rgba(30,18,71,0.12);
+    --shadow-lg: 0 12px 40px rgba(30,18,71,0.18);
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
-
   body {
-    font-family: 'Special Elite', 'Courier New', monospace;
+    font-family: 'Inter', sans-serif;
     background: var(--cream);
-    color: var(--wood-dark);
+    color: var(--gray-800);
     line-height: 1.6;
-    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+
+  /* NAV */
+  nav.topbar { position: sticky; top: 0; z-index: 100; background: var(--purple-800); box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+  .nav-inner { max-width: 1280px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .nav-brand { display: flex; align-items: center; gap: 12px; color: var(--white); text-decoration: none; }
+  .nav-brand-crest { width: 38px; height: auto; object-fit: contain; }
+  .nav-brand-text { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.5rem; letter-spacing: 4px; color: var(--white); }
+  .nav-links { display: flex; list-style: none; gap: 32px; }
+  .nav-links a { color: var(--white); text-decoration: none; font-size: 0.8rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 0; border-bottom: 2px solid transparent; transition: all 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-300); border-bottom-color: var(--gold-300); }
+  .nav-toggle { display: none; background: none; border: 0; color: var(--white); font-size: 1.5rem; cursor: pointer; }
+  @media (max-width: 880px) {
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; position: absolute; top: 100%; right: 0; flex-direction: column; background: var(--purple-800); padding: 20px 32px; gap: 16px; min-width: 200px; box-shadow: var(--shadow-md); }
+    .nav-toggle { display: block; }
   }
 
-  /* --- Wood plank background pattern --- */
-  .wood-bg {
-    background:
-      linear-gradient(180deg, rgba(0,0,0,0.15) 0%, transparent 8%, transparent 92%, rgba(0,0,0,0.15) 100%),
-      repeating-linear-gradient(
-        90deg,
-        var(--wood-mid) 0px,
-        var(--wood-light) 2px,
-        var(--wood-mid) 4px,
-        #5a361d 8px,
-        var(--wood-mid) 14px,
-        var(--wood-dark) 18px,
-        var(--wood-mid) 24px
-      );
-  }
-
-  /* --- Star pattern background --- */
-  .star-bg {
-    background-color: var(--fiji-purple-deep);
+  /* HERO */
+  .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white); overflow: hidden; padding: 60px 24px 100px; background: var(--purple-900); }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background-color: #1E1247;
     background-image:
-      radial-gradient(circle at 10% 20%, rgba(212,168,46,0.18) 0%, transparent 2%),
-      radial-gradient(circle at 80% 30%, rgba(212,168,46,0.15) 0%, transparent 2%),
-      radial-gradient(circle at 40% 70%, rgba(212,168,46,0.12) 0%, transparent 2%),
-      radial-gradient(circle at 90% 85%, rgba(212,168,46,0.18) 0%, transparent 2%),
-      radial-gradient(circle at 20% 90%, rgba(212,168,46,0.12) 0%, transparent 2%),
-      radial-gradient(circle at 60% 10%, rgba(212,168,46,0.10) 0%, transparent 2%);
+      linear-gradient(180deg, rgba(30,18,71,0.45) 0%, rgba(46,26,92,0.30) 40%, rgba(30,18,71,0.85) 100%),
+      url("https://images.unsplash.com/photo-1545419913-775e3e82c7db?w=2400&q=80&auto=format&fit=crop");
+    background-size: cover;
+    background-position: center 40%;
   }
+  .hero-bg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 35%, rgba(75,46,131,0.30), transparent 70%); }
 
-  /* === NAV === */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--wood-dark);
-    border-bottom: 4px solid var(--fiji-gold);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-  }
-  nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0;
-    padding: 0;
-  }
-  nav a {
-    display: block;
-    padding: 16px 24px;
-    color: var(--fiji-gold-bright);
-    text-decoration: none;
-    font-family: 'Rye', serif;
-    font-size: 0.95rem;
-    letter-spacing: 1px;
-    border-right: 1px solid rgba(212,168,46,0.2);
-    transition: all 0.2s;
-  }
-  nav a:hover {
-    background: var(--fiji-purple);
-    color: var(--fiji-white);
-  }
-  nav li:last-child a { border-right: none; }
+  .hero-content { position: relative; z-index: 2; max-width: 920px; }
+  .hero-crest { width: 110px; height: auto; margin: 0 auto 22px; display: block; filter: drop-shadow(0 6px 14px rgba(0,0,0,0.6)); }
 
-  /* === HERO === */
-  .hero {
-    min-height: 100vh;
-    background:
-      linear-gradient(rgba(46,26,92,0.85), rgba(46,26,92,0.92)),
-      var(--fiji-purple-deep);
-    background-image:
-      linear-gradient(rgba(46,26,92,0.80), rgba(75,46,131,0.92)),
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpolygon fill='%23D4A82E' fill-opacity='0.08' points='50,5 61,38 95,38 67,58 78,92 50,72 22,92 33,58 5,38 39,38'/%3E%3C/svg%3E");
-    color: var(--fiji-white);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 60px 20px;
-    position: relative;
-    border-bottom: 8px double var(--fiji-gold);
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(4.5rem, 13vw, 8.5rem);
+    line-height: 0.95;
+    letter-spacing: 6px;
+    color: var(--white);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.7), 0 8px 24px rgba(0,0,0,0.6), 0 0 80px rgba(75,46,131,0.5);
+    margin-bottom: -10px;
   }
-
-  .hero::before, .hero::after {
-    content: '';
-    position: absolute;
-    left: 0; right: 0;
-    height: 14px;
-    background:
-      repeating-linear-gradient(45deg,
-        var(--fiji-gold) 0 10px,
-        var(--wood-dark) 10px 20px);
+  .hero-script {
+    font-family: 'Allura', cursive;
+    font-size: clamp(3rem, 7.5vw, 5.5rem);
+    color: var(--gold-300);
+    line-height: 1;
+    margin-bottom: 28px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.7), 0 6px 18px rgba(0,0,0,0.5), 0 0 30px rgba(212,168,46,0.4);
   }
-  .hero::before { top: 0; }
-  .hero::after { bottom: 0; }
-
-  .crest-wrap {
-    width: 220px;
-    max-width: 60vw;
-    margin: 0 auto 24px;
-    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.5));
-  }
-
-  .pre-title {
-    font-family: 'Smokum', cursive;
-    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-    color: var(--fiji-gold-bright);
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-
-  .hero h1 {
-    font-family: 'Rye', serif;
-    font-size: clamp(3rem, 8vw, 6rem);
-    color: var(--fiji-white);
-    line-height: 1.05;
-    text-shadow: 4px 4px 0 var(--fiji-purple-deep), 6px 6px 0 var(--fiji-gold);
-    margin-bottom: 12px;
-    letter-spacing: 2px;
-  }
-
-  .hero .subtitle {
-    font-family: 'Stardos Stencil', serif;
-    font-weight: 700;
-    font-size: clamp(1.4rem, 3vw, 2.2rem);
-    color: var(--fiji-gold-bright);
-    text-transform: uppercase;
+  .hero-location {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
     letter-spacing: 8px;
-    margin-bottom: 30px;
-  }
-
-  .date-banner {
-    background: var(--fiji-gold);
-    color: var(--wood-dark);
-    padding: 16px 40px;
-    font-family: 'Rye', serif;
-    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-    letter-spacing: 3px;
-    border: 4px solid var(--wood-dark);
-    box-shadow: 0 6px 0 var(--wood-dark);
-    transform: rotate(-1deg);
-    display: inline-block;
-    margin-top: 12px;
-  }
-
-  .yeehaw {
-    margin-top: 40px;
-    font-family: 'Smokum', cursive;
-    font-size: 1.6rem;
-    color: var(--fiji-gold-bright);
-    letter-spacing: 3px;
-  }
-
-  /* === SECTIONS === */
-  section {
-    padding: 80px 20px;
-    position: relative;
-  }
-
-  .section-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .section-title {
-    font-family: 'Rye', serif;
-    font-size: clamp(2.2rem, 5vw, 3.8rem);
-    text-align: center;
-    color: var(--fiji-purple);
-    margin-bottom: 12px;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 0 var(--fiji-gold);
-  }
-
-  .section-sub {
-    font-family: 'Smokum', cursive;
-    text-align: center;
-    color: var(--saloon-red);
-    font-size: 1.4rem;
-    letter-spacing: 3px;
-    margin-bottom: 50px;
-  }
-
-  /* Decorative divider */
-  .divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    margin: 24px auto 50px;
-    color: var(--fiji-gold);
-  }
-  .divider::before, .divider::after {
-    content: '';
-    flex: 1;
-    max-width: 200px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--fiji-gold), transparent);
-  }
-  .divider svg { width: 32px; height: 32px; fill: var(--fiji-gold); }
-
-  /* === WEATHER === */
-  #weather { background: var(--tan-light); border-top: 6px solid var(--fiji-gold); border-bottom: 6px solid var(--fiji-gold); }
-
-  .weather-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 24px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .weather-card {
-    background: var(--cream);
-    border: 3px solid var(--wood-dark);
-    border-radius: 8px;
-    padding: 28px 20px;
-    text-align: center;
-    box-shadow: 5px 5px 0 var(--fiji-purple);
-    position: relative;
-  }
-  .weather-card .day {
-    font-family: 'Rye', serif;
-    font-size: 1.4rem;
-    color: var(--saloon-red);
-    margin-bottom: 6px;
-  }
-  .weather-card .date {
-    font-family: 'Special Elite', monospace;
-    color: var(--wood-mid);
-    margin-bottom: 16px;
-    font-size: 0.95rem;
-  }
-  .weather-card .icon {
-    font-size: 3.5rem;
-    margin: 8px 0 14px;
-  }
-  .weather-card .high {
-    font-family: 'Stardos Stencil', serif;
-    font-weight: 700;
-    font-size: 2.4rem;
-    color: var(--fiji-purple);
-  }
-  .weather-card .low {
-    font-family: 'Special Elite', monospace;
-    color: var(--wood-mid);
-    font-size: 1.1rem;
-    margin-top: 4px;
-  }
-  .weather-card .desc {
-    margin-top: 12px;
-    font-size: 0.85rem;
-    color: var(--wood-mid);
-    font-style: italic;
-  }
-
-  .weather-note {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 0.9rem;
-    color: var(--wood-mid);
-    font-style: italic;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /* === HOTEL === */
-  #hotel { background: var(--cream); }
-
-  .hotel-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: stretch;
-  }
-  @media (max-width: 800px) {
-    .hotel-grid { grid-template-columns: 1fr; }
-  }
-
-  .hotel-info {
-    background: var(--tan-light);
-    border: 3px solid var(--wood-dark);
-    border-radius: 8px;
-    padding: 32px;
-    box-shadow: 6px 6px 0 var(--fiji-purple);
-  }
-
-  .hotel-info h3 {
-    font-family: 'Rye', serif;
-    color: var(--fiji-purple);
-    font-size: 1.6rem;
-    margin-bottom: 8px;
-    line-height: 1.2;
-  }
-  .hotel-info .address {
-    font-family: 'Special Elite', monospace;
-    margin-bottom: 20px;
-    color: var(--wood-mid);
-  }
-
-  .info-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 10px 0;
-    border-bottom: 1px dashed var(--wood-light);
-  }
-  .info-row:last-child { border-bottom: none; }
-  .info-row .label {
-    font-family: 'Stardos Stencil', serif;
-    font-weight: 700;
-    color: var(--saloon-red);
-    min-width: 130px;
     text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-  }
-  .info-row .value { flex: 1; }
-  .info-row a { color: var(--fiji-purple); font-weight: bold; text-decoration: none; border-bottom: 1px dotted var(--fiji-purple); }
-  .info-row a:hover { color: var(--saloon-red); }
-
-  .amenities-list {
-    margin-top: 24px;
-    background: var(--cream);
-    border: 2px dashed var(--wood-mid);
-    padding: 16px;
-    border-radius: 4px;
-  }
-  .amenities-list h4 {
-    font-family: 'Rye', serif;
-    color: var(--fiji-purple);
-    margin-bottom: 12px;
-    font-size: 1.1rem;
-  }
-  .amenities-list ul {
-    list-style: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px;
-    font-size: 0.9rem;
-  }
-  .amenities-list li::before {
-    content: '★ ';
-    color: var(--fiji-gold);
-    font-weight: bold;
+    margin-bottom: 14px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
   }
 
-  .map-wrap {
-    border: 3px solid var(--wood-dark);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 6px 6px 0 var(--fiji-purple);
-    min-height: 420px;
-    background: var(--tan);
-    position: relative;
+  /* Date with dash dividers (matches mockup) */
+  .hero-dates-wrap { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 28px; }
+  .hero-dates-wrap::before, .hero-dates-wrap::after { content: ''; width: 60px; height: 2px; background: var(--gold-300); }
+  .hero-dates {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.3rem, 2.3vw, 1.7rem);
+    letter-spacing: 4px;
+    color: var(--gold-300);
+    text-shadow: 0 2px 6px rgba(0,0,0,0.5);
   }
-  .map-wrap iframe { width: 100%; height: 100%; min-height: 420px; border: 0; display: block; }
-
-  /* === BROTHERS === */
-  #brothers {
-    background-image:
-      linear-gradient(rgba(75,46,131,0.92), rgba(46,26,92,0.95));
-    color: var(--fiji-white);
-    border-top: 8px double var(--fiji-gold);
-    border-bottom: 8px double var(--fiji-gold);
-  }
-  #brothers .section-title { color: var(--fiji-gold-bright); text-shadow: 2px 2px 0 var(--wood-dark); }
-  #brothers .section-sub { color: var(--fiji-white); }
-
-  .brother-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 20px;
+  .hero-tag {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.95;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    color: var(--white);
   }
 
-  .brother-card {
-    background: var(--cream);
-    border: 3px solid var(--fiji-gold);
-    border-radius: 6px;
-    padding: 10px;
-    text-align: center;
-    transition: transform 0.2s;
-    box-shadow: 3px 3px 0 var(--wood-dark);
-  }
-  .brother-card:hover {
-    transform: translateY(-4px) rotate(-1deg);
-  }
+  /* Music City neon image */
+  .music-city-badge { position: absolute; top: 50%; right: 3%; transform: translateY(-50%); width: 280px; z-index: 2; display: none; animation: neonPulse 3s ease-in-out infinite; }
+  .music-city-badge img { width: 100%; height: auto; display: block; }
+  @keyframes neonPulse { 0%, 100% { filter: drop-shadow(0 0 10px rgba(245,100,150,0.5)); } 50% { filter: drop-shadow(0 0 28px rgba(245,100,150,0.85)); } }
+  @media (min-width: 1100px) { .music-city-badge { display: block; } }
+  @media (min-width: 1400px) { .music-city-badge { width: 340px; } }
 
-  .brother-photo {
-    width: 100%;
-    aspect-ratio: 1;
-    background:
-      linear-gradient(135deg, var(--tan) 0%, var(--tan-light) 100%);
-    border: 2px solid var(--wood-mid);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--wood-mid);
-    font-size: 2.5rem;
-    margin-bottom: 8px;
-    position: relative;
-    overflow: hidden;
-  }
-  .brother-photo svg { width: 50%; height: 50%; opacity: 0.4; }
+  /* SECTIONS */
+  section { padding: 80px 24px; position: relative; }
+  .section-inner { max-width: 1280px; margin: 0 auto; }
+  .section-title-row { text-align: center; margin-bottom: 50px; }
+  .section-title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(2rem, 4vw, 2.8rem); color: var(--purple-700); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 8px; display: inline-block; }
+  .section-title::before, .section-title::after { content: ''; display: inline-block; width: 40px; height: 1px; background: var(--gold-500); vertical-align: middle; margin: 0 18px; }
+  .section-subtitle { font-family: 'Allura', cursive; color: var(--gold-500); font-size: 1.6rem; margin-top: 4px; }
 
-  .brother-name {
-    font-family: 'Rye', serif;
-    font-size: 0.85rem;
-    color: var(--fiji-purple);
-    letter-spacing: 1px;
-  }
+  /* COUNTDOWN + WEATHER */
+  .countdown-section { background: var(--purple-800); padding: 60px 24px; margin-top: -60px; position: relative; z-index: 5; }
+  .countdown-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  @media (max-width: 820px) { .countdown-grid { grid-template-columns: 1fr; } }
+  .stat-card { background: var(--cream); border-radius: 14px; padding: 32px 28px; box-shadow: var(--shadow-lg); }
+  .stat-card-title { text-align: center; font-family: 'Inter', sans-serif; font-weight: 600; color: var(--purple-700); letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--gold-500); position: relative; }
+  .stat-card-title::after { content: '◆'; position: absolute; bottom: -7px; left: 50%; transform: translateX(-50%); background: var(--cream); color: var(--gold-500); padding: 0 8px; font-size: 0.7rem; }
+  .countdown { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; text-align: center; margin-bottom: 16px; }
+  .countdown-unit { padding: 10px 4px; }
+  .countdown-num { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(2rem, 4vw, 2.8rem); color: var(--purple-700); line-height: 1; }
+  .countdown-label { font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; color: var(--gray-600); margin-top: 6px; text-transform: uppercase; }
+  .countdown-tag { text-align: center; font-family: 'Allura', cursive; color: var(--gold-500); font-size: 1.3rem; margin-top: 4px; }
+  .weather-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; text-align: center; }
+  .weather-day { padding: 8px 4px; }
+  .weather-name { font-family: 'Inter', sans-serif; font-weight: 600; color: var(--purple-700); font-size: 0.85rem; letter-spacing: 1.5px; }
+  .weather-date { font-size: 0.7rem; color: var(--gray-600); letter-spacing: 1px; margin-bottom: 10px; }
+  .weather-icon { font-size: 2.4rem; margin: 6px 0; line-height: 1; }
+  .weather-high { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.8rem; color: var(--purple-700); }
+  .weather-low { font-size: 0.75rem; color: var(--gray-600); font-weight: 500; }
+  .weather-note { text-align: center; font-size: 0.78rem; color: var(--gray-600); margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--gray-300); font-style: italic; }
 
-  /* === ITINERARY === */
+  /* WHY NASHVILLE */
+  #why { background: linear-gradient(180deg, var(--cream), var(--gray-100)); }
+  .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 20px; }
+  @media (max-width: 900px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) { .why-grid { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; } }
+  .why-card { background: var(--white); border-radius: 12px; padding: 28px 22px; text-align: center; box-shadow: var(--shadow-sm); border-top: 4px solid var(--gold-500); transition: all 0.25s; }
+  .why-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .why-icon { display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; margin: 0 auto 18px; background: var(--purple-700); color: var(--gold-300); border-radius: 50%; }
+  .why-icon svg { width: 28px; height: 28px; }
+  .why-title { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--purple-700); font-size: 1.1rem; margin-bottom: 10px; letter-spacing: 1px; }
+  .why-text { font-size: 0.88rem; color: var(--gray-600); line-height: 1.6; }
+  .why-intro { text-align: center; max-width: 720px; margin: 0 auto 10px; font-size: 1.02rem; color: var(--gray-800); line-height: 1.7; }
+
+  /* ITINERARY */
   #itinerary { background: var(--cream); }
+  .itin-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+  @media (max-width: 900px) { .itin-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } }
+  .itin-col { text-align: center; padding: 0 12px; }
+  .itin-icon { display: flex; align-items: center; justify-content: center; width: 64px; height: 64px; margin: 0 auto 16px; background: var(--purple-700); color: var(--gold-300); border-radius: 50%; box-shadow: var(--shadow-sm); }
+  .itin-icon svg { width: 30px; height: 30px; }
+  .itin-day-date { font-family: 'Inter', sans-serif; font-weight: 600; color: var(--gray-600); font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .itin-day-title { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--purple-700); font-size: 1.15rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 22px; }
+  .itin-events { list-style: none; text-align: left; max-width: 280px; margin: 0 auto; }
+  .itin-events li { display: flex; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--gray-300); font-size: 0.92rem; }
+  .itin-events li:last-child { border-bottom: none; }
+  .itin-time { font-family: 'Inter', sans-serif; font-weight: 600; color: var(--purple-700); min-width: 92px; font-size: 0.82rem; }
+  .itin-event-name { color: var(--gray-800); font-weight: 500; }
+  .itin-event-note { display: block; font-size: 0.75rem; color: var(--gray-600); font-style: italic; margin-top: 2px; }
+  .tbd-chip { display: inline-block; background: var(--gold-500); color: var(--purple-900); font-size: 0.65rem; font-weight: 700; padding: 1px 6px; border-radius: 3px; letter-spacing: 1px; margin-left: 4px; vertical-align: middle; }
 
-  .itin-days {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-  }
+  /* HOTEL */
+  #hotel { background: var(--gray-100); }
+  .hotel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  @media (max-width: 900px) { .hotel-grid { grid-template-columns: 1fr; } }
+  .panel { background: var(--purple-800); border-radius: 14px; padding: 32px; color: var(--white); box-shadow: var(--shadow-md); }
+  .panel-title { text-align: center; font-family: 'Inter', sans-serif; font-weight: 600; color: var(--white); letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; padding-bottom: 14px; border-bottom: 1px solid var(--gold-500); margin-bottom: 22px; position: relative; }
+  .panel-title::after { content: '◆'; position: absolute; bottom: -7px; left: 50%; transform: translateX(-50%); background: var(--purple-800); color: var(--gold-500); padding: 0 8px; font-size: 0.7rem; }
+  .hotel-top { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 22px; }
+  @media (max-width: 540px) { .hotel-top { flex-direction: column; } }
+  .hotel-photo { width: 200px; height: 150px; flex-shrink: 0; border-radius: 8px; overflow: hidden; background: linear-gradient(135deg, var(--purple-500), var(--purple-700)); box-shadow: var(--shadow-md); border: 2px solid var(--gold-500); }
+  .hotel-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hotel-name { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--white); font-size: 1.15rem; line-height: 1.3; margin-bottom: 8px; }
+  .hotel-address { font-size: 0.85rem; color: var(--gold-100); margin-bottom: 8px; }
+  .hotel-phone { font-size: 0.85rem; color: var(--white); margin-bottom: 14px; }
+  .hotel-phone a { color: var(--gold-300); text-decoration: none; font-weight: 500; }
+  .btn-gold { display: inline-block; background: var(--gold-500); color: var(--purple-900); padding: 9px 22px; font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 6px; text-decoration: none; transition: all 0.2s; }
+  .btn-gold:hover { background: var(--gold-300); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+  .hotel-amenities { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding-top: 22px; border-top: 1px solid rgba(212,168,46,0.3); }
+  .amenity { display: flex; gap: 10px; align-items: center; font-size: 0.82rem; color: var(--white); }
+  .amenity svg { width: 22px; height: 22px; flex-shrink: 0; color: var(--gold-300); }
+  .hotel-extra { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding-top: 22px; margin-top: 22px; border-top: 1px solid rgba(212,168,46,0.3); font-size: 0.82rem; }
+  .hotel-extra div { color: var(--gold-100); }
+  .hotel-extra strong { color: var(--white); display: block; font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; }
+  .map-panel { padding: 24px; }
+  .map-wrap { height: 100%; min-height: 380px; border-radius: 10px; overflow: hidden; background: var(--cream); }
+  .map-wrap iframe { width: 100%; height: 100%; min-height: 380px; border: 0; display: block; }
 
-  .day-card {
-    background: var(--tan-light);
-    border: 4px solid var(--wood-dark);
-    border-radius: 8px;
-    padding: 0;
-    overflow: hidden;
-    box-shadow: 6px 6px 0 var(--fiji-purple);
-    display: flex;
-    flex-direction: column;
-  }
+  /* BROTHERS */
+  #brothers { background: var(--cream); }
+  .brother-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 22px; max-width: 1280px; margin: 0 auto; }
+  .brother-card { text-align: center; }
+  .brother-photo { width: 100%; aspect-ratio: 1; border-radius: 10px; overflow: hidden; background: radial-gradient(circle at 50% 35%, rgba(212,168,46,0.18) 0%, transparent 50%), linear-gradient(180deg, #6B4099 0%, #4B2E83 60%, #2E1A5C 100%); display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); border: 3px solid var(--white); outline: 1px solid var(--gold-500); transition: all 0.25s; color: var(--gold-300); position: relative; }
+  .brother-photo::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(1px 1px at 20% 25%, rgba(245,200,66,0.4), transparent), radial-gradient(1px 1px at 80% 60%, rgba(245,200,66,0.3), transparent), radial-gradient(1px 1px at 40% 80%, rgba(245,200,66,0.3), transparent); opacity: 0.6; }
+  .brother-card:hover .brother-photo { transform: translateY(-3px); box-shadow: var(--shadow-md); outline-color: var(--gold-300); }
+  .brother-photo svg { width: 55%; height: 55%; opacity: 0.85; position: relative; z-index: 1; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3)); }
+  .brother-name { margin-top: 10px; font-family: 'Inter', sans-serif; font-weight: 600; color: var(--purple-700); font-size: 0.85rem; letter-spacing: 0.5px; }
+  .brothers-tag { text-align: center; font-family: 'Allura', cursive; color: var(--gold-500); font-size: 1.6rem; margin-top: 40px; }
 
-  .day-header {
-    background: var(--fiji-purple);
-    color: var(--fiji-gold-bright);
-    padding: 18px 22px;
-    border-bottom: 4px solid var(--fiji-gold);
-    text-align: center;
-  }
-  .day-header .day-name {
-    font-family: 'Rye', serif;
-    font-size: 1.8rem;
-    letter-spacing: 2px;
-  }
-  .day-header .day-date {
-    font-family: 'Special Elite', monospace;
-    color: var(--fiji-white);
-    margin-top: 4px;
-    font-size: 0.95rem;
-    letter-spacing: 1px;
-  }
+  /* FAQ + INFO */
+  #info { background: var(--gray-100); }
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+  @media (max-width: 900px) { .info-grid { grid-template-columns: 1fr; } }
+  .light-panel { background: var(--cream); border-radius: 14px; padding: 32px; box-shadow: var(--shadow-sm); }
+  .light-panel-title { text-align: center; font-family: 'Inter', sans-serif; font-weight: 600; color: var(--purple-700); letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; padding-bottom: 14px; border-bottom: 1px solid var(--gold-500); margin-bottom: 22px; position: relative; }
+  .light-panel-title::after { content: '◆'; position: absolute; bottom: -7px; left: 50%; transform: translateX(-50%); background: var(--cream); color: var(--gold-500); padding: 0 8px; font-size: 0.7rem; }
+  .faq-item { border-bottom: 1px solid var(--gray-300); }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-item summary { padding: 14px 0; cursor: pointer; list-style: none; color: var(--purple-700); font-weight: 500; font-size: 0.92rem; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; color: var(--gold-500); font-weight: 700; font-size: 1.4rem; line-height: 1; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-item .faq-body { padding: 0 0 16px 0; color: var(--gray-600); font-size: 0.88rem; line-height: 1.6; }
 
-  .timeline {
-    padding: 24px 22px;
-    flex: 1;
-  }
+  /* IMPORTANT DATES (within info section) */
+  .dates-grid { display: flex; flex-direction: column; gap: 14px; margin-bottom: 22px; }
+  .date-card { display: flex; gap: 16px; align-items: center; padding: 14px 16px; background: var(--white); border-left: 4px solid var(--gold-500); border-radius: 6px; box-shadow: var(--shadow-sm); }
+  .date-amount { font-family: 'Playfair Display', serif; font-weight: 900; color: var(--purple-700); font-size: 1.4rem; min-width: 100px; }
+  .date-info .date-who { font-size: 0.78rem; color: var(--gray-600); font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 2px; }
+  .date-info .date-when { font-size: 0.9rem; color: var(--gray-800); }
+  .info-list { list-style: none; }
+  .info-list li { display: flex; gap: 14px; padding: 10px 0; align-items: center; border-bottom: 1px dashed var(--gray-300); font-size: 0.9rem; }
+  .info-list li:last-child { border-bottom: none; }
+  .info-list svg { width: 22px; height: 22px; color: var(--gold-500); flex-shrink: 0; }
+  .info-list strong { color: var(--purple-700); margin-right: 4px; }
 
-  .timeline-item {
-    display: flex;
-    gap: 16px;
-    padding: 12px 0;
-    border-bottom: 1px dashed var(--wood-light);
-    position: relative;
-  }
-  .timeline-item:last-child { border-bottom: none; }
-
-  .timeline-time {
-    font-family: 'Stardos Stencil', serif;
-    font-weight: 700;
-    color: var(--saloon-red);
-    min-width: 80px;
-    font-size: 0.95rem;
-    letter-spacing: 1px;
-  }
-
-  .timeline-content {
-    flex: 1;
-  }
-  .timeline-content .event {
-    font-family: 'Rye', serif;
-    color: var(--fiji-purple);
-    font-size: 1rem;
-    margin-bottom: 2px;
-  }
-  .timeline-content .detail {
-    font-size: 0.85rem;
-    color: var(--wood-mid);
-    font-style: italic;
-  }
-
-  /* === FOOTER === */
-  footer {
-    background: var(--wood-dark);
-    color: var(--fiji-gold-bright);
-    text-align: center;
-    padding: 50px 20px 30px;
-    border-top: 8px double var(--fiji-gold);
-  }
-  footer .footer-crest { width: 90px; margin: 0 auto 16px; }
-  footer h3 {
-    font-family: 'Rye', serif;
-    font-size: 1.5rem;
-    margin-bottom: 8px;
-    letter-spacing: 2px;
-  }
-  footer .motto {
-    font-family: 'Smokum', cursive;
-    font-size: 1.2rem;
-    color: var(--fiji-white);
-    margin-bottom: 20px;
-    letter-spacing: 3px;
-  }
-  footer .tiny {
-    font-size: 0.8rem;
-    color: var(--tan);
-    font-style: italic;
-    opacity: 0.7;
-  }
-
-  /* TBD chip */
-  .tbd {
-    display: inline-block;
-    background: var(--saloon-red);
-    color: var(--fiji-white);
-    padding: 2px 8px;
-    border-radius: 3px;
-    font-family: 'Stardos Stencil', serif;
-    font-size: 0.75rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-left: 6px;
-  }
+  /* FOOTER */
+  footer { background: linear-gradient(180deg, var(--purple-800), var(--purple-900)); color: var(--white); padding: 50px 24px; text-align: center; position: relative; border-top: 4px solid var(--gold-500); }
+  .footer-inner { max-width: 1100px; margin: 0 auto; position: relative; }
+  .footer-headline { font-family: 'Inter', sans-serif; font-weight: 600; font-size: clamp(1rem, 2vw, 1.3rem); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 10px; }
+  .footer-script { font-family: 'Allura', cursive; color: var(--gold-300); font-size: clamp(2rem, 4vw, 2.6rem); margin-bottom: 16px; }
+  .footer-contact { font-size: 0.95rem; opacity: 0.95; margin-bottom: 6px; }
+  .footer-contact strong { color: var(--gold-300); font-weight: 600; }
+  .footer-contact a { color: var(--gold-300); text-decoration: none; font-weight: 500; }
+  .footer-tiny { font-size: 0.75rem; opacity: 0.55; margin-top: 20px; letter-spacing: 1px; }
+  .footer-icon { position: absolute; bottom: 0; width: 70px; opacity: 0.25; }
+  .footer-icon.left { left: 4%; }
+  .footer-icon.right { right: 4%; }
+  @media (max-width: 700px) { .footer-icon { display: none; } }
 </style>
 </head>
 <body>
 
 <!-- ============ NAV ============ -->
-<nav>
-  <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#weather">Weather</a></li>
-    <li><a href="#hotel">Hotel</a></li>
-    <li><a href="#brothers">Brothers</a></li>
-    <li><a href="#itinerary">Itinerary</a></li>
-  </ul>
+<nav class="topbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-brand">
+      <img class="nav-brand-crest" src="fiji-logo.png" alt="Phi Gamma Delta Crest" />
+      <span class="nav-brand-text">FIJI</span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" id="navToggle">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#why">Why Nashville</a></li>
+      <li><a href="#itinerary">Itinerary</a></li>
+      <li><a href="#hotel">Travel &amp; Stay</a></li>
+      <li><a href="#brothers">Our Group</a></li>
+      <li><a href="#info">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
 </nav>
 
 <!-- ============ HERO ============ -->
 <header id="home" class="hero">
-  <div class="crest-wrap">
-    <!-- Inline SVG Fiji crest -->
-    <svg viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg" aria-label="Phi Gamma Delta Crest">
-      <defs>
-        <linearGradient id="shieldGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#6B4099"/>
-          <stop offset="60%" stop-color="#4B2E83"/>
-          <stop offset="100%" stop-color="#2E1A5C"/>
-        </linearGradient>
-        <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#F2C744"/>
-          <stop offset="100%" stop-color="#A87E14"/>
-        </linearGradient>
-        <radialGradient id="shieldGlow" cx="50%" cy="40%" r="60%">
-          <stop offset="0%" stop-color="#8B5FBD" stop-opacity="0.6"/>
-          <stop offset="100%" stop-color="#4B2E83" stop-opacity="0"/>
-        </radialGradient>
-      </defs>
+  <div class="hero-bg"></div>
 
-      <!-- Wings: left -->
-      <g fill="#F8F5EC" stroke="#D4A82E" stroke-width="1.5">
-        <path d="M115,60 C90,30 50,18 18,28 C30,40 45,50 55,55 C40,55 25,62 15,72 C32,78 50,76 60,72 C50,78 38,90 33,102 C50,98 68,90 75,82 C72,92 70,104 72,118 C88,108 102,90 110,75 Z"/>
-        <!-- feather lines left -->
-        <g stroke="#C9A332" stroke-width="0.8" fill="none">
-          <path d="M30,32 Q50,42 70,52"/>
-          <path d="M28,58 Q48,62 70,68"/>
-          <path d="M40,82 Q55,82 72,86"/>
-          <path d="M52,102 Q62,98 78,98"/>
-        </g>
-      </g>
-      <!-- Wings: right (mirror) -->
-      <g fill="#F8F5EC" stroke="#D4A82E" stroke-width="1.5">
-        <path d="M125,60 C150,30 190,18 222,28 C210,40 195,50 185,55 C200,55 215,62 225,72 C208,78 190,76 180,72 C190,78 202,90 207,102 C190,98 172,90 165,82 C168,92 170,104 168,118 C152,108 138,90 130,75 Z"/>
-        <g stroke="#C9A332" stroke-width="0.8" fill="none">
-          <path d="M210,32 Q190,42 170,52"/>
-          <path d="M212,58 Q192,62 170,68"/>
-          <path d="M200,82 Q185,82 168,86"/>
-          <path d="M188,102 Q178,98 162,98"/>
-        </g>
-      </g>
-
-      <!-- Shield -->
-      <path d="M60,80 L180,80 L180,170 Q180,210 120,238 Q60,210 60,170 Z"
-            fill="url(#shieldGrad)"
-            stroke="url(#goldGrad)"
-            stroke-width="6"/>
-      <path d="M60,80 L180,80 L180,170 Q180,210 120,238 Q60,210 60,170 Z"
-            fill="url(#shieldGlow)"/>
-
-      <!-- Inner shield border line -->
-      <path d="M70,90 L170,90 L170,168 Q170,202 120,226 Q70,202 70,168 Z"
-            fill="none"
-            stroke="#D4A82E"
-            stroke-width="1"
-            stroke-opacity="0.5"/>
-
-      <!-- Star in center of shield -->
-      <g transform="translate(120, 152)">
-        <polygon points="0,-38 11,-12 38,-12 16,6 25,32 0,16 -25,32 -16,6 -38,-12 -11,-12"
-                 fill="url(#goldGrad)"
-                 stroke="#7A5B0F"
-                 stroke-width="1.5"/>
-        <polygon points="0,-22 6,-6 22,-6 9,4 14,18 0,10 -14,18 -9,4 -22,-6 -6,-6"
-                 fill="#F2C744"
-                 opacity="0.55"/>
-      </g>
-    </svg>
+  <!-- Music City neon image -->
+  <div class="music-city-badge">
+    <img src="music-city.png" alt="Nashville Music City" />
   </div>
 
-  <div class="pre-title">Phi Gamma Delta presents</div>
-  <h1>Fiji Formal</h1>
-  <div class="subtitle">Nashville · 2027</div>
-
-  <div class="date-banner">April 23 – 25, 2027</div>
-
-  <div class="yeehaw">~ Howdy, partner. Saddle up. ~</div>
+  <div class="hero-content">
+    <!-- Real Fiji crest from fiji-logo.png -->
+    <img class="hero-crest" src="fiji-logo.png" alt="Phi Gamma Delta Crest" />
+    <h1 class="hero-title">FIJI</h1>
+    <div class="hero-script">Formal 2027</div>
+    <div class="hero-location">Nashville, Tennessee</div>
+    <div class="hero-dates-wrap">
+      <span class="hero-dates">April 23 – 25, 2027</span>
+    </div>
+    <div class="hero-tag">Good times · Great brothers · Unforgettable memories</div>
+  </div>
 </header>
 
-<!-- ============ WEATHER ============ -->
-<section id="weather">
-  <div class="section-inner">
-    <h2 class="section-title">The Forecast</h2>
-    <div class="section-sub">— Predicted from history —</div>
-
-    <div class="weather-grid">
-      <div class="weather-card">
-        <div class="day">Friday</div>
-        <div class="date">April 23, 2027</div>
-        <div class="icon">☀️</div>
-        <div class="high">73°F</div>
-        <div class="low">Low 52°F</div>
-        <div class="desc">Mostly sunny, mild evening</div>
+<!-- ============ COUNTDOWN + WEATHER ============ -->
+<section class="countdown-section">
+  <div class="countdown-grid">
+    <div class="stat-card">
+      <div class="stat-card-title">Countdown to Fiji Formal</div>
+      <div class="countdown">
+        <div class="countdown-unit"><div class="countdown-num" id="cd-days">—</div><div class="countdown-label">Days</div></div>
+        <div class="countdown-unit"><div class="countdown-num" id="cd-hrs">—</div><div class="countdown-label">Hrs</div></div>
+        <div class="countdown-unit"><div class="countdown-num" id="cd-mins">—</div><div class="countdown-label">Mins</div></div>
+        <div class="countdown-unit"><div class="countdown-num" id="cd-secs">—</div><div class="countdown-label">Secs</div></div>
       </div>
-      <div class="weather-card">
-        <div class="day">Saturday</div>
-        <div class="date">April 24, 2027</div>
-        <div class="icon">⛅</div>
-        <div class="high">75°F</div>
-        <div class="low">Low 53°F</div>
-        <div class="desc">Partly cloudy, light breeze</div>
-      </div>
-      <div class="weather-card">
-        <div class="day">Sunday</div>
-        <div class="date">April 25, 2027</div>
-        <div class="icon">🌤️</div>
-        <div class="high">74°F</div>
-        <div class="low">Low 52°F</div>
-        <div class="desc">Pleasant, good drivin' weather</div>
-      </div>
+      <div class="countdown-tag">Let the countdown begin!</div>
     </div>
-
-    <p class="weather-note">
-      ★ Based on Nashville historical averages for late April. Late April highs typically land in the low-to-mid 70s°F with overnight lows around 50–53°F. Occasional warm days can reach 85°F. Updated forecasts will replace these numbers closer to the event.
-    </p>
+    <div class="stat-card">
+      <div class="stat-card-title">Nashville Weather Forecast</div>
+      <div class="weather-row">
+        <div class="weather-day"><div class="weather-name">FRI</div><div class="weather-date">APR 23</div><div class="weather-icon">☀️</div><div class="weather-high">73°</div><div class="weather-low">52°</div></div>
+        <div class="weather-day"><div class="weather-name">SAT</div><div class="weather-date">APR 24</div><div class="weather-icon">⛅</div><div class="weather-high">75°</div><div class="weather-low">53°</div></div>
+        <div class="weather-day"><div class="weather-name">SUN</div><div class="weather-date">APR 25</div><div class="weather-icon">🌤️</div><div class="weather-high">74°</div><div class="weather-low">52°</div></div>
+      </div>
+      <div class="weather-note">Average High: 74° &nbsp;|&nbsp; Average Low: 52° · Based on Nashville historical April averages. Pack layers and bring your best fits!</div>
+    </div>
   </div>
 </section>
 
-<!-- ============ HOTEL ============ -->
+<!-- ============ WHY NASHVILLE ============ -->
+<section id="why">
+  <div class="section-inner">
+    <div class="section-title-row">
+      <h2 class="section-title">Why Nashville</h2>
+      <div class="section-subtitle">Music City was made for this</div>
+    </div>
+    <p class="why-intro">There's no better place to celebrate brotherhood than the live-music capital of the world. From the neon of Broadway to the smell of slow-smoked BBQ, every block of downtown Nashville is built for a great weekend with the brothers.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        </div>
+        <div class="why-title">Music City</div>
+        <div class="why-text">Live music spills out of every doorway. Honky tonks, blues bars, and rooftop stages — there's a soundtrack to every hour of the weekend.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><rect x="9" y="13" width="6" height="8"/><circle cx="12" cy="9" r="1"/></svg>
+        </div>
+        <div class="why-title">Honky Tonk Highway</div>
+        <div class="why-text">Lower Broadway is one long block party — Kid Rock's, Tootsie's, Robert's, AJ's. Our hotel sits right at the edge of it all.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8c0-1 1-2 2-2h14c1 0 2 1 2 2v4H3z"/><path d="M3 12v6c0 1 1 2 2 2h14c1 0 2-1 2-2v-6"/><path d="M7 6V4M17 6V4M12 6V3"/></svg>
+        </div>
+        <div class="why-title">Southern Eats</div>
+        <div class="why-text">Hot chicken, smoked brisket, biscuits, and bourbon. Hattie B's, Martin's, Prince's — you won't go hungry, and you won't eat the same thing twice.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22V12a7 7 0 0 1 14 0v10"/><path d="M5 22h14"/><circle cx="9" cy="12" r="1.5"/><circle cx="15" cy="12" r="1.5"/></svg>
+        </div>
+        <div class="why-title">Everything's Walkable</div>
+        <div class="why-text">From our hotel on Broadway, every bar, venue, and restaurant on this list is within a short walk. No long Ubers, no missing the action.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ITINERARY ============ -->
+<section id="itinerary">
+  <div class="section-inner">
+    <div class="section-title-row">
+      <h2 class="section-title">Itinerary</h2>
+      <div class="section-subtitle">Three days in Music City</div>
+    </div>
+    <div class="itin-grid">
+      <div class="itin-col">
+        <div class="itin-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div class="itin-day-date">Friday, April 23</div>
+        <div class="itin-day-title">Arrival &amp; Broadway</div>
+        <ul class="itin-events">
+          <li><span class="itin-time">4:00 PM</span><span class="itin-event-name">Hotel Check-In</span></li>
+          <li><span class="itin-time">5–8 PM</span><span class="itin-event-name">Pregame<span class="itin-event-note">Location TBD</span></span></li>
+          <li><span class="itin-time">9:00 PM</span><span class="itin-event-name">Kid Rock's Honky Tonk<span class="itin-event-note">On Broadway</span></span></li>
+          <li><span class="itin-time">Late</span><span class="itin-event-name">Back to Hotel</span></li>
+        </ul>
+      </div>
+      <div class="itin-col">
+        <div class="itin-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 11l5-5 3 3-5 5"/><path d="M14 8l-2 2"/><circle cx="9" cy="15" r="4"/><circle cx="9" cy="15" r="1.5" fill="currentColor"/><path d="M19 5l1 1"/></svg>
+        </div>
+        <div class="itin-day-date">Saturday, April 24</div>
+        <div class="itin-day-title">Nashville Day &amp; Night</div>
+        <ul class="itin-events">
+          <li><span class="itin-time">8–10 AM</span><span class="itin-event-name">Free Hotel Breakfast</span></li>
+          <li><span class="itin-time">Midday</span><span class="itin-event-name">Free Time / Sightseeing<span class="itin-event-note">Music Row, Ryman <span class="tbd-chip">TBD</span></span></span></li>
+          <li><span class="itin-time">Evening</span><span class="itin-event-name">Honky Tonk Bar<span class="itin-event-note">Venue <span class="tbd-chip">TBD</span></span></span></li>
+          <li><span class="itin-time">Late</span><span class="itin-event-name">Blues Bar<span class="itin-event-note">Venue <span class="tbd-chip">TBD</span></span></span></li>
+        </ul>
+      </div>
+      <div class="itin-col">
+        <div class="itin-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v10"/><path d="M9 13c-3 0-5 2-5 4v2h17v-2c0-2-2-3-4-3l-3-1V3H9z"/><path d="M14 9h-5"/></svg>
+        </div>
+        <div class="itin-day-date">Sunday, April 25</div>
+        <div class="itin-day-title">Farewell &amp; Drive Home</div>
+        <ul class="itin-events">
+          <li><span class="itin-time">8–10 AM</span><span class="itin-event-name">Free Hotel Breakfast</span></li>
+          <li><span class="itin-time">11:00 AM</span><span class="itin-event-name">Hotel Check-Out</span></li>
+          <li><span class="itin-time">Noon</span><span class="itin-event-name">Drive Home to Champaign<span class="itin-event-note">Carpool roster <span class="tbd-chip">TBD</span></span></span></li>
+          <li><span class="itin-time">Evening</span><span class="itin-event-name">Arrive Champaign<span class="itin-event-note">Safe travels, brothers</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOTEL + MAP ============ -->
 <section id="hotel">
   <div class="section-inner">
-    <h2 class="section-title">The Bunkhouse</h2>
-    <div class="section-sub">— Where we hang our hats —</div>
-
+    <div class="section-title-row">
+      <h2 class="section-title">Travel &amp; Stay</h2>
+      <div class="section-subtitle">Where we hang our hats</div>
+    </div>
     <div class="hotel-grid">
-      <div class="hotel-info">
-        <h3>Holiday Inn Express Nashville Downtown – Broadway</h3>
-        <div class="address">920 Broadway, Nashville, TN 37203</div>
-
-        <div class="info-row">
-          <div class="label">Front Desk</div>
-          <div class="value"><a href="tel:+16152440150">(615) 244-0150</a></div>
+      <div class="panel">
+        <div class="panel-title">Hotel Information</div>
+        <div class="hotel-top">
+          <div class="hotel-photo">
+            <img src="https://digital.ihg.com/is/image/ihg/holiday-inn-express-nashville-10525846318-4x3?wid=400&amp;hei=300" alt="Holiday Inn Express Nashville Downtown guest room" loading="lazy" />
+          </div>
+          <div>
+            <div class="hotel-name">Holiday Inn Express Nashville Downtown – Broadway</div>
+            <div class="hotel-address">920 Broadway<br/>Nashville, TN 37203</div>
+            <div class="hotel-phone">Front Desk: <a href="tel:+16152440150">(615) 244-0150</a></div>
+            <div style="font-size:0.85rem; color:var(--gold-100); line-height:1.5; margin-top:6px;"><strong style="color:var(--gold-300); display:block; font-size:0.75rem; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:4px;">To Book Your Room</strong>Contact the Formal Chair, Aidan Marchese, at <a href="tel:+18475078169" style="color:var(--gold-300); text-decoration:none; font-weight:500;">(847) 507-8169</a></div>
+          </div>
         </div>
-        <div class="info-row">
-          <div class="label">Reservations</div>
-          <div class="value"><a href="tel:+18778343613">1-877-834-3613</a></div>
+        <div class="hotel-amenities">
+          <div class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M2 12h20"/></svg><span>Steps to Broadway</span></div>
+          <div class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12a7 7 0 0 1 14 0"/><path d="M2 9a10 10 0 0 1 20 0"/><circle cx="12" cy="14" r="1.5" fill="currentColor"/></svg><span>Free Wi-Fi</span></div>
+          <div class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 14h16M6 11h2M6 17h2M16 11h2M16 17h2"/><circle cx="12" cy="14" r="3"/></svg><span>Free Breakfast</span></div>
+          <div class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="9" width="20" height="6" rx="1"/><path d="M6 9V7M18 9V7"/></svg><span>Fitness Center</span></div>
+          <div class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 17c2-1 3-1 5 0s3 1 5 0 3-1 5 0 3 1 5 0"/><path d="M2 21c2-1 3-1 5 0s3 1 5 0 3-1 5 0 3 1 5 0"/><circle cx="7" cy="7" r="2"/></svg><span>Outdoor Pool</span></div>
+          <div class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 12h10M7 15h6"/></svg><span>Valet $40/night</span></div>
         </div>
-        <div class="info-row">
-          <div class="label">Email</div>
-          <div class="value"><a href="mailto:frontdeskhienash@gmail.com">frontdeskhienash@gmail.com</a></div>
-        </div>
-        <div class="info-row">
-          <div class="label">Check-In</div>
-          <div class="value">4:00 PM (min. age 21)</div>
-        </div>
-        <div class="info-row">
-          <div class="label">Check-Out</div>
-          <div class="value">11:00 AM</div>
-        </div>
-        <div class="info-row">
-          <div class="label">Valet Parking</div>
-          <div class="value">$65 / day <span class="tbd">confirm at desk</span></div>
-        </div>
-        <div class="info-row">
-          <div class="label">Website</div>
-          <div class="value"><a href="https://www.ihg.com/holidayinnexpress/hotels/us/en/nashville/bnabw/hoteldetail" target="_blank" rel="noopener">View on IHG ↗</a></div>
-        </div>
-
-        <div class="amenities-list">
-          <h4>Amenities</h4>
-          <ul>
-            <li>Free Express Breakfast</li>
-            <li>24/7 Fitness Center</li>
-            <li>Seasonal Outdoor Pool</li>
-            <li>Social Express Bar</li>
-            <li>Live Music Nightly 4–7p</li>
-            <li>Free Wi-Fi</li>
-            <li>Valet Parking</li>
-            <li>Express Shop Market</li>
-            <li>Smoke-Free</li>
-            <li>Steps to Broadway</li>
-          </ul>
+        <div class="hotel-extra">
+          <div><strong>Check-In</strong>4:00 PM (age 18+)</div>
+          <div><strong>Check-Out</strong>11:00 AM</div>
+          <div><strong>Reservations</strong>1-877-834-3613</div>
+          <div><strong>Email</strong>frontdeskhienash@gmail.com</div>
         </div>
       </div>
-
-      <div class="map-wrap">
-        <iframe
-          loading="lazy"
-          allowfullscreen
-          referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps?q=Holiday%20Inn%20Express%20Nashville%20Downtown%20Broadway%2C%20920%20Broadway%2C%20Nashville%2C%20TN%2037203&output=embed"
-          title="Holiday Inn Express Nashville Downtown Broadway map">
-        </iframe>
+      <div class="panel map-panel">
+        <div class="panel-title">Location Map</div>
+        <div class="map-wrap">
+          <iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Holiday%20Inn%20Express%20Nashville%20Downtown%20Broadway%2C%20920%20Broadway%2C%20Nashville%2C%20TN%2037203&amp;output=embed" title="Holiday Inn Express Nashville location"></iframe>
+        </div>
       </div>
     </div>
   </div>
@@ -775,179 +476,140 @@
 <!-- ============ BROTHERS ============ -->
 <section id="brothers">
   <div class="section-inner">
-    <h2 class="section-title">The Posse</h2>
-    <div class="section-sub">— Brothers ridin' to Nashville —</div>
-
-    <div class="brother-grid" id="brother-grid">
-      <!-- 40 cards injected by script -->
+    <div class="section-title-row">
+      <h2 class="section-title">Our Group</h2>
+      <div class="section-subtitle">Brothers ridin' to Nashville</div>
     </div>
+    <div class="brother-grid" id="brother-grid"></div>
+    <div class="brothers-tag">Better together.</div>
   </div>
 </section>
 
-<!-- ============ ITINERARY ============ -->
-<section id="itinerary">
+<!-- ============ FAQ + INFO ============ -->
+<section id="info">
   <div class="section-inner">
-    <h2 class="section-title">The Itinerary</h2>
-    <div class="section-sub">— Three days in Music City —</div>
-
-    <div class="itin-days">
-
-      <!-- FRIDAY -->
-      <div class="day-card">
-        <div class="day-header">
-          <div class="day-name">Friday</div>
-          <div class="day-date">April 23, 2027</div>
-        </div>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-time">4:00 PM</div>
-            <div class="timeline-content">
-              <div class="event">Hotel Check-In</div>
-              <div class="detail">Holiday Inn Express, 920 Broadway. Drop bags, freshen up.</div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">5:00 PM</div>
-            <div class="timeline-content">
-              <div class="event">Catered Dinner</div>
-              <div class="detail">On-site catering, 5:00 – 8:00 PM. Location <span class="tbd">TBD</span></div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">9:00 PM</div>
-            <div class="timeline-content">
-              <div class="event">Kid Rock's Big Honky Tonk &amp; Steakhouse</div>
-              <div class="detail">First stop on Broadway. Time <span class="tbd">TBD</span></div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">Late</div>
-            <div class="timeline-content">
-              <div class="event">Back to the Bunkhouse</div>
-              <div class="detail">Pace yourself, partner.</div>
-            </div>
-          </div>
-        </div>
+    <div class="section-title-row">
+      <h2 class="section-title">Good to Know</h2>
+      <div class="section-subtitle">Everything you need before you go</div>
+    </div>
+    <div class="info-grid">
+      <div class="light-panel">
+        <div class="light-panel-title">Frequently Asked Questions</div>
+        <details class="faq-item">
+          <summary>What is the dress code?</summary>
+          <div class="faq-body">Cocktail attire with a Nashville twist throughout the weekend. Boots and pearl-snaps encouraged. Specifics will be posted closer to the trip.</div>
+        </details>
+        <details class="faq-item">
+          <summary>How do I book my hotel room?</summary>
+          <div class="faq-body">Reach out to the Formal Chair, Aidan Marchese, at (847) 507-8169 to book your room. Group rate info will be shared once finalized.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Is transportation provided?</summary>
+          <div class="faq-body">No formal transportation is provided to Nashville — try to carpool with your brothers. Roster will be coordinated as the date approaches. Once at the hotel, everything on the itinerary is walking distance.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What is the cancellation policy?</summary>
+          <div class="faq-body">Up to 20% of the group's rooms can be cancelled. If you need to cancel, reach out to the formal chair Aidan Marchese — contact info is in the footer.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Who do I contact with questions?</summary>
+          <div class="faq-body">Aidan Marchese, Formal Chair — (847) 507-8169. Contact info is also in the footer below.</div>
+        </details>
       </div>
 
-      <!-- SATURDAY -->
-      <div class="day-card">
-        <div class="day-header">
-          <div class="day-name">Saturday</div>
-          <div class="day-date">April 24, 2027</div>
-        </div>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-time">8 – 10 AM</div>
-            <div class="timeline-content">
-              <div class="event">Free Hotel Breakfast</div>
-              <div class="detail">Express Start® buffet. Save room for the cinnamon rolls.</div>
+      <div class="light-panel">
+        <div class="light-panel-title">Important Dates &amp; Payments</div>
+        <div class="dates-grid">
+          <div class="date-card">
+            <div class="date-amount">$150</div>
+            <div class="date-info">
+              <div class="date-who">Underclassmen Deposit</div>
+              <div class="date-when">Due by the start of school</div>
             </div>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-time">Midday</div>
-            <div class="timeline-content">
-              <div class="event">Free Time / Sightseeing</div>
-              <div class="detail">Music Row, Ryman, Honky Tonk Highway. <span class="tbd">TBD</span></div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">Evening</div>
-            <div class="timeline-content">
-              <div class="event">Honky Tonk Bar</div>
-              <div class="detail">Live country music on Broadway. Venue <span class="tbd">TBD</span></div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">Late</div>
-            <div class="timeline-content">
-              <div class="event">Blues Bar</div>
-              <div class="detail">Cap the night with some blues. Venue <span class="tbd">TBD</span></div>
+          <div class="date-card">
+            <div class="date-amount">$271.63</div>
+            <div class="date-info">
+              <div class="date-who">Next Payment</div>
+              <div class="date-when">Due 45 days before formal · approx. March 9, 2027</div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- SUNDAY -->
-      <div class="day-card">
-        <div class="day-header">
-          <div class="day-name">Sunday</div>
-          <div class="day-date">April 25, 2027</div>
-        </div>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-time">8 – 10 AM</div>
-            <div class="timeline-content">
-              <div class="event">Free Hotel Breakfast</div>
-              <div class="detail">Last meal in Music City.</div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">11:00 AM</div>
-            <div class="timeline-content">
-              <div class="event">Hotel Check-Out</div>
-              <div class="detail">Bags loaded, rooms cleared.</div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">Noon</div>
-            <div class="timeline-content">
-              <div class="event">Drive Home to Champaign</div>
-              <div class="detail">~7 hour haul. Carpool roster <span class="tbd">TBD</span></div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">Evening</div>
-            <div class="timeline-content">
-              <div class="event">Arrive Champaign</div>
-              <div class="detail">Safe travels, brothers.</div>
-            </div>
-          </div>
-        </div>
+        <div class="light-panel-title" style="margin-top:14px;">Trip Quick Reference</div>
+        <ul class="info-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5L3 7.5c-.3.4-.2 1 .2 1.3l7 3.2-3 3-3-1-2 2 3.5 1.5L11 21l2-2-1-3 3-3 3.2 7c.3.4.9.5 1.3.2l.8-.7c.4-.2.6-.6.5-1.1z"/></svg><span><strong>Airport:</strong> Nashville International (BNA)</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="7" rx="2"/><path d="M5 11V7a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v4"/><circle cx="7.5" cy="18" r="1.5"/><circle cx="16.5" cy="18" r="1.5"/></svg><span><strong>Getting There:</strong> Carpool with brothers (~7 hrs from Champaign)</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11a9 9 0 1 1-8.5-8.5"/><path d="M9 12l2 2 4-4"/></svg><span><strong>Dress Code:</strong> Cocktail / Western <span class="tbd-chip">TBD</span></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 12h10M7 15h6"/></svg><span><strong>Hotel Valet:</strong> $40 / night</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span><strong>Address:</strong> 920 Broadway, Nashville, TN 37203</span></li>
+        </ul>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
-<footer>
-  <div class="footer-crest">
-    <svg viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
-      <path d="M60,80 L180,80 L180,170 Q180,210 120,238 Q60,210 60,170 Z"
-            fill="#4B2E83" stroke="#D4A82E" stroke-width="6"/>
-      <g transform="translate(120, 150)">
-        <polygon points="0,-34 10,-10 34,-10 15,5 22,28 0,14 -22,28 -15,5 -34,-10 -10,-10"
-                 fill="#F2C744"/>
-      </g>
-    </svg>
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-inner">
+    <svg class="footer-icon left" viewBox="0 0 24 24" fill="none" stroke="#F5C842" stroke-width="1.5"><path d="M9 3v10"/><path d="M9 13c-3 0-5 2-5 4v2h17v-2c0-2-2-3-4-3l-3-1V3H9z"/><path d="M14 9h-5"/></svg>
+    <svg class="footer-icon right" viewBox="0 0 24 24" fill="none" stroke="#F5C842" stroke-width="1.5"><path d="M11 11l5-5 3 3-5 5"/><circle cx="9" cy="15" r="4"/><circle cx="9" cy="15" r="1.5" fill="#F5C842"/></svg>
+    <div class="footer-headline">Get ready for an unforgettable weekend</div>
+    <div class="footer-script">See you in Nashville!</div>
+    <div class="footer-contact"><strong>Formal Chair:</strong> Aidan Marchese &middot; <a href="tel:+18475078169">(847) 507-8169</a></div>
+    <div class="footer-tiny">Phi Gamma Delta &middot; Fiji Formal 2027 &middot; Nashville, TN &middot; April 23&ndash;25, 2027</div>
   </div>
-  <h3>Phi Gamma Delta</h3>
-  <div class="motto">Not for college days alone</div>
-  <div class="tiny">Fiji Formal 2027 · Nashville, TN · April 23–25</div>
 </footer>
 
 <script>
-  // Generate 40 brother placeholder cards
-  const grid = document.getElementById('brother-grid');
-  const cowboySvg = `<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-    <!-- cowboy silhouette -->
-    <path d="M10 26 Q32 14 54 26 L52 30 Q32 22 12 30 Z" fill="#4A2C1A"/>
-    <ellipse cx="32" cy="30" rx="14" ry="6" fill="#4A2C1A"/>
-    <circle cx="32" cy="38" r="9" fill="#4A2C1A"/>
-    <path d="M18 60 Q18 48 32 48 Q46 48 46 60 Z" fill="#4A2C1A"/>
-    <polygon points="32,32 33,35 36,35 33.5,37 34.5,40 32,38 29.5,40 30.5,37 28,35 31,35"
-             fill="#D4A82E"/>
-  </svg>`;
-  for (let i = 1; i <= 40; i++) {
-    const card = document.createElement('div');
+  var grid = document.getElementById('brother-grid');
+  var placeholderSvg = '<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">' +
+    '<ellipse cx="32" cy="26" rx="14" ry="6" fill="currentColor"/>' +
+    '<ellipse cx="32" cy="24" rx="18" ry="3" fill="currentColor"/>' +
+    '<circle cx="32" cy="34" r="9" fill="currentColor"/>' +
+    '<path d="M18 60 Q18 46 32 46 Q46 46 46 60 Z" fill="currentColor"/></svg>';
+  for (var i = 1; i <= 40; i++) {
+    var card = document.createElement('div');
     card.className = 'brother-card';
-    card.innerHTML = `
-      <div class="brother-photo">${cowboySvg}</div>
-      <div class="brother-name">Brother #${i}</div>
-    `;
+    card.innerHTML = '<div class="brother-photo">' + placeholderSvg + '</div><div class="brother-name">Brother #' + i + '</div>';
     grid.appendChild(card);
   }
+
+  var target = new Date('2027-04-23T18:00:00-05:00').getTime();
+  var $d = document.getElementById('cd-days');
+  var $h = document.getElementById('cd-hrs');
+  var $m = document.getElementById('cd-mins');
+  var $s = document.getElementById('cd-secs');
+  function tick() {
+    var diff = Math.max(0, target - Date.now());
+    var day = Math.floor(diff / 86400000); diff -= day * 86400000;
+    var hr  = Math.floor(diff / 3600000);  diff -= hr  * 3600000;
+    var min = Math.floor(diff / 60000);    diff -= min * 60000;
+    var sec = Math.floor(diff / 1000);
+    $d.textContent = String(day).padStart(2, '0');
+    $h.textContent = String(hr).padStart(2, '0');
+    $m.textContent = String(min).padStart(2, '0');
+    $s.textContent = String(sec).padStart(2, '0');
+  }
+  tick(); setInterval(tick, 1000);
+
+  var toggle = document.getElementById('navToggle');
+  var navLinksEl = document.getElementById('navLinks');
+  toggle.addEventListener('click', function() { navLinksEl.classList.toggle('open'); });
+  navLinksEl.addEventListener('click', function(e) { if (e.target.tagName === 'A') navLinksEl.classList.remove('open'); });
+
+  var sectionIds = ['home','why','itinerary','hotel','brothers','info','contact'];
+  var navLinkEls = document.querySelectorAll('.nav-links a');
+  function syncActive() {
+    var y = window.scrollY + 120;
+    var active = sectionIds[0];
+    for (var i = 0; i < sectionIds.length; i++) {
+      var el = document.getElementById(sectionIds[i]);
+      if (el && el.offsetTop <= y) active = sectionIds[i];
+    }
+    navLinkEls.forEach(function(a) { a.classList.toggle('active', a.getAttribute('href') === '#' + active); });
+  }
+  window.addEventListener('scroll', syncActive, { passive: true });
 </script>
 
 </body>

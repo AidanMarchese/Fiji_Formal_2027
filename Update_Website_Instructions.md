@@ -1,4 +1,4 @@
-Go into C:\\Users\\mmarchese\\Documents\\Claude\\Projects\\Formal 2027 Website>
+Go into C:\\Users\\mmarchese\\Documents\\Claude\\Projects\\Formal 2027 Website
 
 then clikc on white space and put in cmd --> enter
 
