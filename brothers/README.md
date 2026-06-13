@@ -47,3 +47,7 @@ Notes:
 - JPG format (the website looks for .jpg specifically).
 - If a photo is missing, the silhouette placeholder shows automatically.
 - Refresh the website after adding photos to see them.
+
+# Additional Slots (41–94)
+
+These are placeholder slots — update the brotherNames array in index.html as you add real names, then drop in matching photos as brother-41.jpg through brother-94.jpg.

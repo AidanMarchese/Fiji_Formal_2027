@@ -596,7 +596,14 @@
     'Mr. Kams','Soto','Shoi','Bum','Lacrosse','German','Pantazis','Hanley',
     'Tauras','Dash','Kabir','Tiki','Koupy','Marchese','El Prez','Goomba',
     'Edward','Covaci','Law','Kelly','Drewno','Composto','Heard','Cheddy',
-    'OG Prez','Pepe','Andino','Wolter','Ocho','Brady','Duffy','Radina'
+    'OG Prez','Pepe','Andino','Wolter','Ocho','Brady','Duffy','Radina',
+    'Dubs','PCP','Vallejo','Apte','Garrido','Jimbo','Dirty Bramby','Pedraza',
+    'Freak','Ford #1','Cantieri Jr.','Rosa','Risk','Diamond','Scruggers','Ford #2',
+    'Hareza','Top','Andy','Mr. Loyal','Elza','Bong','Henich','Ferda',
+    'Geary','Rohe','Bartlett','Moran','Security','Chlewis','Macek','Blondie',
+    'Trigonov','Dawson','Hollywood','Harmon','Snyders','Puhlido','Townie','Mogger',
+    'Maradkel','McCarty','The Standard','Rabi','Temu Swidih','Boldt','Graft','Rizznuski',
+    'Op','Barthel Hater','Sza','Bravo','Bagman','I WANT YOU'
   ];
   var SHOW_INITIAL = 8;
   for (var i = 1; i <= brotherNames.length; i++) {
@@ -604,7 +611,7 @@
     card.className = 'brother-card' + (i > SHOW_INITIAL ? ' brother-hidden' : '');
     card.innerHTML =
       '<div class="brother-photo">' +
-        '<img class="brother-img" src="brothers/Brother-' + i + '.jpg" alt="' + brotherNames[i-1] + '" onerror="this.remove()" />' +
+        '<img class="brother-img" src="brothers/brother-' + i + '.jpg" alt="' + brotherNames[i-1] + '" onerror="this.remove()" />' +
         placeholderSvg +
       '</div>' +
       '<div class="brother-name">' + brotherNames[i-1] + '</div>';
